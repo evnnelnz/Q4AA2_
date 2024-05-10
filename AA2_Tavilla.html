@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            TAVILLA_AA2
+        </title>
+        <style>
+            body {
+                
+                background-image: url('mbti.png');
+                background-size: cover;
+                background-attachment: fixed;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: bold;
+                color: rgb(255, 255, 255) ;
+                
+            }
+
+            form {
+                text-align: center;
+            }
+
+            fieldset {
+                background-color: rgba(158, 149, 240, 0.3);
+                border-radius: 12px;
+            }
+
+            .form-container {
+            align-items: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            }
+            
+            .inputField {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            }
+            
+            .inputField label {
+            width: 100px;
+            margin-right: 10px;
+            }
+            
+            .inputField input,
+            .inputField select {
+            padding: 5px;
+            border: 1px solid #000000;
+            border-radius: 12px;
+            }
+            
+            .inputField input:focus,
+            .inputField select:focus,
+            .inputField textarea:focus {
+            border-color: green;
+            }
+            
+            .inputField input:invalid,
+            .inputField select:invalid,
+            .inputField textarea:invalid {
+            border-color: red;
+            }
+            
+            #output {
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            padding: 10px;
+            margin-top: 20px;
+
+            width: 290px;
+
+            background-color: rgba(28, 39, 27, 0.5);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="form-container">
+
+        
+            <form id="signForm" onsubmit="return outputFunction();">
+    
+                <fieldset>
+    
+                    <div class="inputField">
+                    <label for="name"> NAME: </label> </br>
+                    <input type="text" id="name" required onblur="myFunction(this)">
+                    </div>
+    
+                    </br></br>
+    
+                    <div class="inputField">
+                    <label for="userName"> USERNAME: </label> </br>
+                    <input type="text" id="userName" required onblur="myFunction(this)">
+                    </div>
+    
+                    </br></br>
+    
+                    <div class="inputField">
+                    <label for="gender"> GENDER: </label> </br>
+                    <select name="gender" id="gender" required onblur="myFunction(this)">
+                        <option value="male"> Male </option>
+                        <option value="female"> Female </option>
+                        <option value="secret"> Prefer not to Mention </option>
+                    </select>
+                    </div>   
+                
+                    </br></br>
+    
+    
+                    <div class="inputField">
+                    <label for="pWord"> PASSWORD: </label> </br>
+                    <input type="password" id="pWord" name="pWord" required onblur="myFunction(this)"> 
+                    </div> 
+                
+                    </br></br>
+    
+                    <div class="inputField">
+                    <label for="eMail"> EMAIL: </label> </br>
+                    <input type="email" id="eMail" name="eMail" required onblur="myFunction(this)">
+                    </div> </br></br>
+    
+                    <div class="inputField">
+                    <label for="address"> ADDRESS: </label> </br>
+                    <input type="text" id="address" name="address" required onblur="myFunction(this)">
+                    </div> </br></br>
+    
+                    <div class="inputField">
+                    <label for="interest"> WRITE A SHORT PARAGRAPH ON YOUR INTEREST/S: </label> </br></br>
+                    <textarea id="interest" name="interest" required onblur="myFunction(this)"> </textarea>
+                    </div>
+    
+                </fieldset> 
+    
+                    </br></br> 
+                    
+                    <div class="button-container">
+                        <button type="submit"> Submit </button>
+                        <button type="reset" onclick="return cat()"> Reset </button>
+                    </div>
+    
+            </form>
+            
+            <p id="output"></p>
+            
+                
+        </div>
+    
+        <script>
+    
+            function myFunction(input) {
+    
+                if (input.value.trim() === "") {
+                    input.style.borderColor = "red";
+                } else {
+                    input.style.borderColor = "green";
+                }
+            
+            }
+            
+            function outputFunction(){
+                var name = document.getElementById('name').value;
+                var username = document.getElementById('userName').value;
+                var gender = document.getElementById('gender').value;
+                var password = document.getElementById('pWord').value;
+                var email = document.getElementById('eMail').value;
+                var address = document.getElementById('address').value;
+                var interest  = document.getElementById('interest').value;
+    
+                document.getElementById("output").innerHTML = "Name: " + name +"<br><br> Username: " + username + "<br><br> Gender: " + gender + "<br><br> Password: " + password + "<br><br> Email: " + email + "<br><br> Address: " + address + "<br><br> Interest/s: " + interest;
+            }
+    
+            function cat(){
+                document.getElementById("output").innerHTML = " ";
+            }
+    
+            signForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+    
+
+    </script>
+    </body>
+</html>
+
